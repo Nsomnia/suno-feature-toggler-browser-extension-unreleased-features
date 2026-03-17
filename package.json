@@ -1,0 +1,19 @@
+{
+  "name": "suno-feature-toggler",
+  "version": "1.0.0",
+  "description": "Tampermonkey/Violentmonkey userscript for toggling Suno experimental features",
+  "main": "suno-feature-toggler.user.js",
+  "scripts": {
+    "test": "echo \"No tests configured\""
+  },
+  "keywords": [
+    "suno",
+    "tampermonkey",
+    "violentmonkey",
+    "userscript",
+    "feature-flags",
+    "statsig"
+  ],
+  "author": "",
+  "license": "MIT"
+}
