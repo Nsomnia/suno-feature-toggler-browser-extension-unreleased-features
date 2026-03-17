@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 400px;
+      max-height: 500px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #e8e8e8;
+    }
+    .header {
+      background: linear-gradient(90deg, #e94560 0%, #ff6b6b 100%);
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .content {
+      padding: 12px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .section {
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #e94560;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #333;
+    }
+    .gate {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid #2a2a4a;
+    }
+    .gate:last-child { border-bottom: none; }
+    .gate-info { flex: 1; min-width: 0; }
+    .gate-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gate-desc {
+      font-size: 10px;
+      color: #888;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gate-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .status {
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #333;
+      color: #888;
+    }
+    .status.active { background: #2e7d32; color: #fff; }
+    .status.override { background: #e94560; color: #fff; }
+    .toggle {
+      position: relative;
+      width: 36px;
+      height: 20px;
+      background: #333;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .toggle.on { background: #e94560; }
+    .toggle .knob {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .toggle.on .knob { transform: translateX(16px); }
+    .footer {
+      padding: 10px 16px;
+      background: #0f0f1a;
+      border-top: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+    .footer-btns { display: flex; gap: 8px; }
+    .btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11px;
+      background: #333;
+      color: #888;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #444; }
+    .btn.danger { background: #b71c1c; color: #fff; }
+    .btn.danger:hover { background: #c62828; }
+    .info { color: #888; font-size: 10px; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a1a2e; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <div class="header">Suno Feature Toggler</div>
+  <div class="content">
+    <div class="section">
+      <div class="section-title">Experimental Features (Beta)</div>
+      <div id="experimental-gates"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Active Features</div>
+      <div id="active-gates"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">UI/Internal Settings</div>
+      <div id="internal-gates"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="info">Override: <span id="override-count">0</span> gates</div>
+    <div class="footer-btns">
+      <button class="btn" id="reset-btn">Reset All</button>
+      <button class="btn danger" id="reload-btn">Reload Page</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

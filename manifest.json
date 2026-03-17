@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Suno Feature Toggler",
+  "version": "1.0.0",
+  "description": "Toggle unreleased features on Suno",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://suno.com/*", "https://*.suno.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://suno.com/*", "https://*.suno.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["https://suno.com/*", "https://*.suno.com/*"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Suno Feature Toggler"
+  }
+}
